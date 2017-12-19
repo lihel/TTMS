@@ -1,11 +1,4 @@
-<%@ page import="com.ttms.model.Employee" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: lmy
-  Date: 17-11-19
-  Time: 下午2:16
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -38,14 +31,6 @@
         </div>
 
         <div class="col-md-9">
-            <div class="search" >
-                <form class="form-inline" name="myForm" action="EmployeeServlet?method=searchByPage" method="post">
-                    <!-- <input type="hidden" name="method" value="search"/> -->
-                    <input type="text" class="form-control" name="emp_name" value="${search_emp_name}"/>
-                    <input type="submit" class="btn btn-primary" value="查   询" />&nbsp;&nbsp;
-                    <input type="button" class="btn btn-danger" value="增   加" onclick="javascript:window.location='add.jsp'"/>
-                </form>
-            </div>
 
             <div class="tableUser">
 
@@ -60,54 +45,11 @@
                             <th>邮箱</th>
                             <th colspan=2>操作</th>
                         </tr>
-                        <%
-                            int currentPage=1;  //当前页
-                            int allCount=0;     //总记录数
-                            int allPageCount=0; //总页数
-                            Employee Employee=null;
-                            //查看request中是否有currentPage信息，如没有，则说明首次访问该页
-                            if(request.getAttribute("allEmployee")!=null)
-                            {
-                                //获取Action返回的信息
-                                currentPage=((Integer)request.getAttribute("currentPage")).intValue();
-                                ArrayList<Employee> list=(ArrayList<Employee>)request.getAttribute("allEmployee");
-                                allCount=((Integer)request.getAttribute("allCount")).intValue();
-                                allPageCount=((Integer)request.getAttribute("allPageCount")).intValue();
-                                if(list!=null && list.size()>0)
-                                {
-                                    for(int i=0;i<list.size();i++)
-                                    {
-                                        if(i%2==0)
-                                            out.println("<tr class='success'>");
-                                        else
-                                            out.println("<tr class='active'>");
-                        %>
-                        <th><%=list.get(i).getEmp_id()%></th>
-                        <th><%=list.get(i).getEmp_no()%></th>
-                        <th><%=list.get(i).getEmp_name()%></th>
-                        <th><%=list.get(i).getEmp_tel_num()%></th>
-                        <th><%=list.get(i).getEmp_addr()%></th>
-                        <th><%=list.get(i).getEmp_email()%></th>
-                        <th><a href="EmployeeServlet?method=searchById&emp_id=<%=list.get(i).getEmp_id()%>">修改</a></th>
-                        <th><a href="EmployeeServlet?method=delete&emp_id=<%=list.get(i).getEmp_id()%>&emp_name=${search_emp_name}&currentPage=${currentPage}">删除</a></th>
-                        </tr>
-                        <%
-                                    }
-                                }
-                            }
-                        %>
                     </table>
                 </div>
 
             </div>
-            <div class="text-center">
-                <ul class="pagination">
-                    <li><a href="EmployeeServlet?method=searchByPage&currentPage=1&emp_name=${search_emp_name}">首页</a></li>
-                    <li><a href="EmployeeServlet?method=searchByPage&currentPage=<%=(currentPage-1)<1?1:(currentPage-1)%>&emp_name=${search_emp_name}">上一页</a></li>
-                    <li><a href="EmployeeServlet?method=searchByPage&currentPage=<%=(currentPage+1)>allPageCount?allPageCount:(currentPage+1)%>&emp_name=${search_emp_name}">下一页</a></li>
-                    <li><a href="EmployeeServlet?method=searchByPage&currentPage=<%=allPageCount%>&emp_name=${search_emp_name}">末页</a></li>
-                </ul>
-            </div>
+
             <p>
                 <input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add"
                        value="添加员工">

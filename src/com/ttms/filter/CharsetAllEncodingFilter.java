@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns = "/*", initParams = { @WebInitParam(name = "encoding", value = "UTF-8") })
+//@WebFilter(urlPatterns = "/*", initParams = { @WebInitParam(name = "encoding", value = "UTF-8") })
 public class CharsetAllEncodingFilter implements Filter
 {
     private String encoding = null;

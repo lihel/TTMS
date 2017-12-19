@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class User implements Serializable{
     private String emp_no;
     private String emp_pass;
-    private Integer role;
+    private int role;
     private String  head_path;
     private Employee emp;
 
@@ -39,7 +39,7 @@ public class User implements Serializable{
         this.emp_pass = emp_pass;
     }
 
-    public Integer getRole() {
+    public int getRole() {
         return role;
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by lmy on 17-12-18.
  */
-public class EmployeeD {
+public class EmployeeDao {
     public List<Employee> findAllEmp() throws SQLException {
         QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from employee";
